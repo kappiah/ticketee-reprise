@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
+    @projects = Project.all
   end
 
   def new
@@ -14,7 +15,8 @@ class ProjectsController < ApplicationController
       flash[:notice] = "Project has been created"
       redirect_to @project
     else
-      #
+      flash.now[:error] = "Project has not been created"
+      render :new
     end
   end
 
