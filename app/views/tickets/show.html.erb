@@ -12,6 +12,8 @@
   </header>
 
   <%= link_to "Edit Ticket", [:edit, @project, @ticket] %>
+  <%= link_to "Delete Ticket", [@project, @ticket],
+        method: :delete, class: "delete" %>
   <div>
     <%= simple_format(@ticket.description) %>
   </div>
