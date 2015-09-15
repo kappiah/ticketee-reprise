@@ -11,6 +11,7 @@
     </h2>
   </header>
 
+  <%= link_to "Edit Ticket", [:edit, @project, @ticket] %>
   <div>
     <%= simple_format(@ticket.description) %>
   </div>
