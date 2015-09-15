@@ -8,3 +8,13 @@
 <%= link_to "New Ticket", new_project_ticket_path(@project) %>
 
 <p><%= @project.description %></p>
+
+<div id="tickets">
+  <ul>
+    <% @project.tickets.each do |ticket| %>
+      <li>
+        <%= link_to ticket.name, [@project, ticket] %>
+      </li>
+    <% end %>
+  </ul>
+</div>
