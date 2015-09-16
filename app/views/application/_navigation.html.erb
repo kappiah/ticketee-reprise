@@ -8,6 +8,14 @@
         </li>
       </ul>
     </nav>
+    <div class="user-info">
+      <% if signed_in? %>
+        <span class="nav-text"><%= current_user.email -%></span>
+        <%= link_to "Sign Out", sign_out_path, class: "sign-up", method: :delete %>
+      <% else %>
+        <%= link_to 'Sign In', sign_in_path, { class: "sign-up" } %>
+      <% end %>
+    </div>
     <div class="navigation-tools">
       <div class="search-bar">
         <form role="search">
@@ -17,7 +25,6 @@
           </button>
         </form>
       </div>
-      <%= link_to 'Sign Up', root_path, { class: "sign-up" } %>
     </div>
   </div>
 </header>

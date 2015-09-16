@@ -7,6 +7,15 @@
   @include span-columns(4);
 }
 
+.user-info {
+  @include span-columns(4);
+  display: inline-block;
+  padding: 16px 0;
+}
+.nav-text {
+  color: #fff;
+}
+
 .button {
   &.danger {
     @include button(flat, $light-red);
