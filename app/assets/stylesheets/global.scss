@@ -1,0 +1,20 @@
+
+#content {
+  @include outer-container();
+}
+
+.form-inputs {
+  @include span-columns(4);
+}
+
+.button {
+  &.danger {
+    @include button(flat, $light-red);
+  }
+  &.safe {
+    @include button(flat, $green);
+  }
+  &.action {
+    @include button(flat, $blue);
+  }
+}
