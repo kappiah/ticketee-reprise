@@ -10,7 +10,14 @@
       <%= @ticket.name %>
     </h2>
   </header>
-
+  <div id="attributes">
+    <section class="author">
+      Author: <%= @ticket.author.email %>
+    </section>
+    <section class="created">
+      Created at: <%= time_ago_in_words(@ticket.created_at) %>
+    </section>
+  </div>
   <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>
   <%= link_to "Delete Ticket", [@project, @ticket],
         method: :delete, class: "delete button danger" %>
