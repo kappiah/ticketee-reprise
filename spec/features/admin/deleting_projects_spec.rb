@@ -1,11 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "users can delete projects" do
+  let(:user) { FactoryGirl.create(:user, :admin) }
 
   before do
     FactoryGirl.create(:project, name: "Sublime Text 3")
 
-    visit "/"
+    visit root_path as: user
     click_link "Sublime Text 3"
   end
 
