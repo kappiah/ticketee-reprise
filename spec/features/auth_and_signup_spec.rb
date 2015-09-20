@@ -23,7 +23,7 @@ RSpec.feature "authentication and signup" do
   scenario "users can successfully signin" do
     visit "/"
     click_link "Sign In"
-    fill_in "Email", with: "test@example.com"
+    fill_in "Email", with: user.email
     fill_in "Password", with: "password"
 
     click_button "Sign in"
@@ -31,7 +31,7 @@ RSpec.feature "authentication and signup" do
     expect(page).to have_content("You have signed in successfully")
 
     within ".user-info" do
-      expect(page).to have_content("test@example.com")
+      expect(page).to have_content(user.email)
     end
   end
 end
