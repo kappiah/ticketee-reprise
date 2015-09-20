@@ -6,6 +6,11 @@
         <li class="nav-link">
           <%= link_to "Tickets", root_path %>
         </li>
+        <% admins_only do %>
+          <li>
+            <%= link_to "Admin", admin_root_path %>
+          </li>
+        <% end %>
       </ul>
     </nav>
     <div class="user-info">
