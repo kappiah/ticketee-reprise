@@ -5,6 +5,8 @@
   <ul class="actions">
     <li>
       <%= link_to "Edit User", [:edit, :admin, @user] %>
+      <%= link_to "Archive User", [:archive, :admin, @user],
+                                  method: :patch %>
     </li>
   </ul>
 </header>
