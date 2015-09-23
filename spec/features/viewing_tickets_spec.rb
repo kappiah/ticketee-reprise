@@ -16,7 +16,8 @@ RSpec.feature "Users can view tickets" do
                        description: "Isn't a joke",
                        author: user)
 
-    visit "/"
+    assign_role!(user, :viewer, sublime)
+    visit root_path as: user
   end
 
   scenario "for a given project" do

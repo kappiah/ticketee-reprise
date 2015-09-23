@@ -146,6 +146,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (2.14.0)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-canonical-host (0.1.0)
       addressable
@@ -282,6 +284,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma
+  pundit (~> 1.0.1)
   rack-canonical-host
   rack-timeout
   rails (~> 4.2.0)
