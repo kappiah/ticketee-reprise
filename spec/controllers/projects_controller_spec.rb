@@ -10,4 +10,15 @@ RSpec.describe ProjectsController do
 
     expect(flash[:alert]).to eq message
   end
+
+  it "handles unauthorised access gracefully" do
+    allow(controller).to receive(:current_user)
+
+    project = FactoryGirl.create(:project)
+    get :show, id: project
+
+    expect(response).to redirect_to(root_path)
+    message = "You are not allowed to do that"
+    expect(flash[:alert]).to eq(message)
+  end
 end
