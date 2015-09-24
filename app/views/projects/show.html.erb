@@ -1,4 +1,6 @@
-<%= link_to "Edit Project", edit_project_path(@project), class: "button action" %>
+<% if policy(@project).update? %>
+  <%= link_to "Edit Project", edit_project_path(@project), class: "button action" %>
+<% end %>
 
 <% admins_only do %>
   <%= link_to "Delete Project",

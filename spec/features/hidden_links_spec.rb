@@ -23,6 +23,14 @@ RSpec.feature "only admins can view protected links" do
     end
   end
 
+  context "non admin users (project viewers)" do
+    scenario "cannot see the edit project link" do
+      visit project_path(project, as: user)
+
+      expect(page).to_not have_link("Edit Project")
+    end
+  end
+
   context "admin users" do
     scenario "can see the new project link" do
       visit root_path as: admin
@@ -34,6 +42,12 @@ RSpec.feature "only admins can view protected links" do
       visit project_path(project, as: admin)
 
       expect(page).to have_link("Delete Project")
+    end
+
+    scenario "can see the edit project link" do
+      visit project_path(project, as: admin)
+
+      expect(page).to have_link("Edit Project")
     end
   end
 end
