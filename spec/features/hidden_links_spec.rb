@@ -29,6 +29,12 @@ RSpec.feature "only admins can view protected links" do
 
       expect(page).to_not have_link("Edit Project")
     end
+
+    scenario "cannot see the the new ticket link" do
+      visit project_path(project, as: user)
+
+      expect(page).to_not have_link("New Ticket")
+    end
   end
 
   context "admin users" do
@@ -48,6 +54,12 @@ RSpec.feature "only admins can view protected links" do
       visit project_path(project, as: admin)
 
       expect(page).to have_link("Edit Project")
+    end
+
+    scenario "can see the new ticket link" do
+      visit project_path(project, as: admin)
+
+      expect(page).to have_link("New Ticket")
     end
   end
 end
