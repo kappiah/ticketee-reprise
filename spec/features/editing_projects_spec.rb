@@ -5,7 +5,7 @@ RSpec.feature "Users can edit projects" do
   let(:project) { FactoryGirl.create(:project, name: "Sublime Text 3") }
 
   before do
-    assign_role!(user, :viewer, project)
+    assign_role!(user, :manager, project)
     visit root_path as: user
     click_link "Sublime Text 3"
     click_link "Edit Project"

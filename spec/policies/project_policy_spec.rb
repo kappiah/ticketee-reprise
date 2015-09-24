@@ -65,4 +65,39 @@ describe ProjectPolicy do
       expect(subject).to_not permit(user, project)
     end
   end
+
+  permissions :update? do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { FactoryGirl.create(:project) }
+
+    it "blocks anonymous users" do
+      expect(subject).to_not permit(nil, project)
+    end
+
+    it "allows viewers of the project" do
+      assign_role!(user, :viewer, project)
+      expect(subject).to_not permit(user, project)
+    end
+
+    it "allows editors of a project" do
+      assign_role!(user, :editor, project)
+      expect(subject).to_not permit(user, project)
+    end
+
+    it "allows managers of a project" do
+      assign_role!(user, :manager, project)
+      expect(subject).to permit(user, project)
+    end
+
+    it "allows administrators" do
+      admin = FactoryGirl.create(:user, :admin)
+      expect(subject).to permit(admin, project)
+    end
+
+    it "doesn't allow users from other projects" do
+      other_project = FactoryGirl.create(:project)
+      assign_role!(user, :manager, other_project)
+      expect(subject).to_not permit(user, project)
+    end
+  end
 end
