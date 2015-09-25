@@ -4,6 +4,7 @@ RSpec.feature "only admins can view protected links" do
   let(:admin) { FactoryGirl.create(:user, :admin) }
   let(:user) { FactoryGirl.create(:user) }
   let(:project) { FactoryGirl.create(:project) }
+  let(:ticket) { FactoryGirl.create(:ticket, project: project, author: user) }
 
   before do
     assign_role!(user, :viewer, project)
@@ -35,6 +36,12 @@ RSpec.feature "only admins can view protected links" do
 
       expect(page).to_not have_link("New Ticket")
     end
+
+    scenario "cannot see the edit ticket link" do
+      visit project_ticket_path(project, ticket, as: user)
+
+      expect(page).to_not have_link("Edit Ticket")
+    end
   end
 
   context "admin users" do
@@ -60,6 +67,12 @@ RSpec.feature "only admins can view protected links" do
       visit project_path(project, as: admin)
 
       expect(page).to have_link("New Ticket")
+    end
+
+    scenario "can see the edit ticket link" do
+      visit project_ticket_path(project, ticket, as: admin)
+
+      expect(page).to have_link("Edit Ticket")
     end
   end
 end

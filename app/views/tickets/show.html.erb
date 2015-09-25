@@ -18,7 +18,9 @@
       Created at: <%= time_ago_in_words(@ticket.created_at) %>
     </section>
   </div>
-  <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>
+  <% if policy(@ticket).update? %>
+    <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>
+  <% end %>
   <%= link_to "Delete Ticket", [@project, @ticket],
         method: :delete, class: "delete button danger" %>
   <div>

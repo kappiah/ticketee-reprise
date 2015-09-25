@@ -6,7 +6,7 @@ RSpec.feature "user can edit existing tickets" do
   let(:ticket) { FactoryGirl.create(:ticket, project: project, author: user) }
 
   before do
-    assign_role!(user, :viewer, project)
+    assign_role!(user, :editor, project)
     visit project_ticket_path(project, ticket, as: user)
     click_link "Edit Ticket"
   end
