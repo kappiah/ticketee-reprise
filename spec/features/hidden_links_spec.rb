@@ -42,6 +42,12 @@ RSpec.feature "only admins can view protected links" do
 
       expect(page).to_not have_link("Edit Ticket")
     end
+
+    scenario "cannot see the delete ticket link" do
+      visit project_ticket_path(project, ticket, as: user)
+
+      expect(page).to_not have_link("Delete Ticket")
+    end
   end
 
   context "admin users" do
@@ -73,6 +79,12 @@ RSpec.feature "only admins can view protected links" do
       visit project_ticket_path(project, ticket, as: admin)
 
       expect(page).to have_link("Edit Ticket")
+    end
+
+    scenario "can see the delete ticket link" do
+      visit project_ticket_path(project, ticket, as: admin)
+
+      expect(page).to have_link("Delete Ticket")
     end
   end
 end

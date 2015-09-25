@@ -21,8 +21,10 @@
   <% if policy(@ticket).update? %>
     <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>
   <% end %>
-  <%= link_to "Delete Ticket", [@project, @ticket],
+  <% if policy(@ticket).destroy? %>
+    <%= link_to "Delete Ticket", [@project, @ticket],
         method: :delete, class: "delete button danger" %>
+  <% end %>
   <div>
     <%= simple_format(@ticket.description) %>
   </div>
