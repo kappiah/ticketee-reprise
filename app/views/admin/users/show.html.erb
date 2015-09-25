@@ -9,4 +9,16 @@
                                   method: :patch %>
     </li>
   </ul>
+
+  <% if @user.roles.any? %>
+    <ul>
+      <% @user.roles.each do |role| %>
+        <li>
+          <%= role.role.titleize %>: <%= role.project.name %>
+        </li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p>This user has no roles.</p>
+  <% end %>
 </header>
