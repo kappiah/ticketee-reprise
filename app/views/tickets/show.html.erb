@@ -25,7 +25,18 @@
     <%= link_to "Delete Ticket", [@project, @ticket],
         method: :delete, class: "delete button danger" %>
   <% end %>
+
   <div>
     <%= simple_format(@ticket.description) %>
   </div>
+
+  <% if @ticket.attachment.present? %>
+    <h4>Attachments</h4>
+    <div class="attachment">
+      <p>
+      <%= link_to File.basename(@ticket.attachment.url),
+        @ticket.attachment.url %> (<%= number_to_human_size(@ticket.attachment.size) %>)
+      </p>
+    </div>
+  <% end %>
 </div>
