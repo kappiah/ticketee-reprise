@@ -10,6 +10,6 @@
 /log/*
 /public/system
 /public/assets
-/public/uploads
+uploads
 /tags
 /tmp/*
