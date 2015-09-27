@@ -22,6 +22,12 @@ RSpec.feature "only admins can view protected links" do
 
       expect(page).to_not have_link("Delete Project")
     end
+
+    scenario "cannot see the create comment form" do
+      visit project_ticket_path(project, ticket, as: user)
+
+      expect(page).to_not have_heading("New Comment")
+    end
   end
 
   context "non admin users (project viewers)" do
@@ -85,6 +91,12 @@ RSpec.feature "only admins can view protected links" do
       visit project_ticket_path(project, ticket, as: admin)
 
       expect(page).to have_link("Delete Ticket")
+    end
+
+    scenario "can see the new comment form" do
+      visit project_ticket_path(project, ticket, as: admin)
+
+      expect(page).to have_heading("New Comment")
     end
   end
 end
