@@ -66,12 +66,12 @@ RSpec.feature "users can create new tickets" do
     end
   end
 
-  scenario "with multiple file attachments" do
+  scenario "with multiple file attachments", js: true do
     fill_in "Name", with: "Add documentation of blink tag"
     fill_in "Description", with: "The blink tag has a speed attribute"
     attach_file "File #1", "spec/fixtures/speed.txt"
+    click_link "Add another file"
     attach_file "File #2", "spec/fixtures/spin.txt"
-    attach_file "File #3", "spec/fixtures/gradient.txt"
 
     click_button "Create Ticket"
 
@@ -79,7 +79,6 @@ RSpec.feature "users can create new tickets" do
     within "#ticket .attachments" do
       expect(page).to have_content("speed.txt")
       expect(page).to have_content("spin.txt")
-      expect(page).to have_content("gradient.txt")
     end
   end
 end
