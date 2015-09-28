@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         patch :archive
       end
     end
+    resources :states, only: [:new, :create, :index]
   end
 
   resources :projects, only: [:index, :show, :edit, :update]  do
