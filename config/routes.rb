@@ -10,7 +10,11 @@ Rails.application.routes.draw do
         patch :archive
       end
     end
-    resources :states, only: [:new, :create, :index]
+    resources :states, only: [:new, :create, :index] do
+      member do
+        get :make_default
+      end
+    end
   end
 
   resources :projects, only: [:index, :show, :edit, :update]  do
