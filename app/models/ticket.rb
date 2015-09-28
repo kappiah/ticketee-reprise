@@ -3,6 +3,7 @@ class Ticket < ActiveRecord::Base
   validates :description, presence: true, length: { minimum: 10 }
 
   belongs_to :project
+  belongs_to :state
   belongs_to :author, class_name: "User"
 
   has_many :attachments, dependent: :destroy

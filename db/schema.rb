@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927125830) do
+ActiveRecord::Schema.define(version: 20150927235524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150927125830) do
     t.integer  "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "state_id"
   end
 
   add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
@@ -69,6 +70,13 @@ ActiveRecord::Schema.define(version: 20150927125830) do
   add_index "roles", ["project_id"], name: "index_roles_on_project_id", using: :btree
   add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "colour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -76,10 +84,12 @@ ActiveRecord::Schema.define(version: 20150927125830) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "author_id"
+    t.integer  "state_id"
   end
 
   add_index "tickets", ["author_id"], name: "index_tickets_on_author_id", using: :btree
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id", using: :btree
+  add_index "tickets", ["state_id"], name: "index_tickets_on_state_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
@@ -96,10 +106,12 @@ ActiveRecord::Schema.define(version: 20150927125830) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "attachments", "tickets"
+  add_foreign_key "comments", "states"
   add_foreign_key "comments", "tickets"
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "roles", "projects"
   add_foreign_key "roles", "users"
   add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "states"
   add_foreign_key "tickets", "users", column: "author_id"
 end

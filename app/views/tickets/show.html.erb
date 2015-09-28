@@ -17,6 +17,11 @@
     <section class="created">
       Created at: <%= time_ago_in_words(@ticket.created_at) %>
     </section>
+    <% if @ticket.state.present? %>
+      <section>
+        State: <%= render @ticket.state %>
+      </section>
+    <% end %>
   </div>
   <% if policy(@ticket).update? %>
     <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>

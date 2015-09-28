@@ -28,4 +28,21 @@ RSpec.feature "users can comment on tickets" do
 
     expect(page).to have_content("Comment has not been created")
   end
+
+  scenario "when chaning a tickets state" do
+    FactoryGirl.create(:state, name: "Open")
+
+    visit project_ticket_path(project, ticket, as: user)
+
+    fill_in "Text", with: "This is a real issue"
+    select "Open", from: "State"
+    click_button "Create Comment"
+
+    expect(page).to have_content("Comment has been created")
+    within("#ticket .state") do
+      expect(page).to have_content("Open")
+    end
+  end
+
+
 end
