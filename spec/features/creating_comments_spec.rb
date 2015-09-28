@@ -47,6 +47,12 @@ RSpec.feature "users can comment on tickets" do
     within("#comments") do
       expect(page).to have_content("state changed to Open")
     end
+  end
 
+  scenario "but cannot change the state without permission" do
+    assign_role!(user, :editor, project)
+    visit project_ticket_path(project, ticket, as: user)
+
+    expect(page).to_not have_select("State")
   end
 end

@@ -1,6 +1,8 @@
 <h3>New Comment</h3>
 <%= simple_form_for [ticket, comment] do |f| %>
   <%= f.input :text %>
-  <%= f.association :state %>
+  <% if policy(ticket).change_state? %>
+    <%= f.association :state %>
+  <% end %>
   <%= f.submit %>
 <% end %>
