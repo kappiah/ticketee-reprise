@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.feature "users can create new tickets" do
   let(:user) { FactoryGirl.create(:user) }
+  let!(:state) { FactoryGirl.create(:state, name: "New", default: true) }
 
   before do
     project = FactoryGirl.create(:project, name: "Internet Explorer")
@@ -17,6 +18,7 @@ RSpec.feature "users can create new tickets" do
     click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has been created")
+    expect(page).to have_content("State: New")
 
     within("#ticket") do
       expect(page).to have_content("Author: #{user.email}")
