@@ -57,7 +57,7 @@ RSpec.feature "users can comment on tickets" do
   end
 
   scenario "when adding a new tag to a project" do
-    assign_role!(user, :editor, project)
+    assign_role!(user, :manager, project)
     visit project_ticket_path(project, ticket, as: user)
     expect(page).to_not have_content("bug")
 
