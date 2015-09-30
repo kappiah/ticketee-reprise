@@ -27,3 +27,10 @@
     @include button(flat, $blue);
   }
 }
+
+.tag {
+  a {
+    color: #fff;
+  }
+  @include button(flat, $blue);
+}
