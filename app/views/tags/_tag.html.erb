@@ -1,4 +1,8 @@
 <div class="tag">
-  <%= link_to "<span></span>".html_safe, "#", class: "remove", title: "Remove" %>
-  <%= tag.name %>
+  <% if policy(ticket).tag? %>
+    <%= link_to fa_icon("close"),
+      remove_ticket_tag_path(ticket, tag),
+      method: :delete, remote: true, class: "remove", title: "Remove" %>
+    <%= tag.name %>
+  <% end %>
 </div>

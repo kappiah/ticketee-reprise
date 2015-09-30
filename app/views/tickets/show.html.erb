@@ -19,7 +19,7 @@
     </section>
     <section id="tags">
       <% if @ticket.tags.any? %>
-        <%= render @ticket.tags %>
+        <%= render @ticket.tags, ticket: @ticket %>
       <% end %>
     </section>
     <% if @ticket.state.present? %>
