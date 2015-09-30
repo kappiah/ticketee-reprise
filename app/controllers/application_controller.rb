@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   include Clearance::Controller
   include Pundit
 
-  # after_action :verify_authorized, except: [:index]
+  after_action :verify_authorized, except: [:index]
   after_action :verify_policy_scoped, only: [:index]
+  skip_after_action :verify_authorized if Clearance::BaseController
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
