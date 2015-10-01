@@ -3,6 +3,7 @@
     <%= link_to fa_icon("close"),
       remove_ticket_tag_path(ticket, tag),
       method: :delete, remote: true, class: "remove", title: "Remove" %>
-    <%= tag.name %>
+    <%= link_to tag.name, search_project_tickets_path(ticket.project,
+                                                      search: "tag:#{tag.name}") %>
   <% end %>
 </div>
