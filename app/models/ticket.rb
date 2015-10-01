@@ -16,6 +16,10 @@ class Ticket < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags, uniq: true
 
+  searcher do
+    label :tag, from: :tags, field: "name"
+  end
+
   def tag_names
     @tag_names
   end
