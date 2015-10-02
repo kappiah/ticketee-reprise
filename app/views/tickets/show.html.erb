@@ -27,6 +27,10 @@
         State: <%= render @ticket.state %>
       </section>
     <% end %>
+    <section id="watchers">
+      <%= @ticket.watchers.map(&:email).to_sentence %>
+      <%= toggle_watching_button(@ticket) %>
+    </section>
   </div>
   <% if policy(@ticket).update? %>
     <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>
