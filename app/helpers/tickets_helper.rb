@@ -18,6 +18,6 @@ module TicketsHelper
            else
              "Watch"
            end
-    link_to text, watch_project_ticket_path(ticket.project, ticket), method: :post
+    link_to text, watch_project_ticket_path(ticket.project, ticket), method: :post, class: "button action"
   end
 end

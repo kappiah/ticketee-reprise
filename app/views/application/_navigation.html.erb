@@ -6,30 +6,18 @@
         <li class="nav-link">
           <%= link_to "Tickets", root_path %>
         </li>
-        <% admins_only do %>
-          <li>
-            <%= link_to "Admin", admin_root_path %>
-          </li>
-        <% end %>
       </ul>
     </nav>
-    <div class="user-info">
+    <div class="navigation-tools user-info">
       <% if signed_in? %>
         <span class="nav-text"><%= current_user.email -%></span>
-        <%= link_to "Sign Out", sign_out_path, class: "sign-up", method: :delete %>
+        <% admins_only do %>
+          <%= link_to "Admin", admin_root_path, class: "button danger" %>
+        <% end %>
+        <%= link_to "Sign Out", sign_out_path, class: "button action", method: :delete %>
       <% else %>
-        <%= link_to 'Sign In', sign_in_path, { class: "sign-up" } %>
+        <%= link_to 'Sign In', sign_in_path, { class: "button action" } %>
       <% end %>
-    </div>
-    <div class="navigation-tools">
-      <div class="search-bar">
-        <form role="search">
-          <input type="search" placeholder="Enter Search" />
-          <button type="submit">
-            <i class="fa-icon icon-search"></i>
-          </button>
-        </form>
-      </div>
     </div>
   </div>
 </header>

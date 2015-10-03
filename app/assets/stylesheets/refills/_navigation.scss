@@ -5,7 +5,7 @@ header.navigation {
   $base-accent-color: #477DCA !default;
   $dark-gray: #333 !default;
   $large-screen: em(860) !default;
-  
+
   a {
     text-decoration: none;
   }
@@ -271,6 +271,7 @@ header.navigation {
     height: $navigation-height;
     padding-left: $navigation-padding / 2;
     padding-right: $navigation-padding;
+    padding-top: 0.75em;
 
     @include media($large-screen) {
       background: transparent;
