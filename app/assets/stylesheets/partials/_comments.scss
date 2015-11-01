@@ -1,0 +1,10 @@
+#comments {
+  @include span-columns(8);
+  @include shift(4);
+}
+
+.comment {
+  background-color: lighten($light-gray, 10%);
+  border-bottom: 1px solid $light-gray;
+  margin-bottom: 10px;
+}

@@ -4,18 +4,6 @@
 
 <div id="ticket">
   <div class="meta">
-    <section id="tags">
-      <% if @ticket.tags.any? %>
-        <%= render @ticket.tags, ticket: @ticket %>
-      <% end %>
-    </section>
-  </div>
-
-  <div class="details">
-    <header>
-      <h2><%= @ticket.name %></h2>
-    </header>
-
     <div class="actions">
       <% if policy(@ticket).update? %>
         <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>
@@ -25,6 +13,19 @@
             method: :delete, class: "delete button danger" %>
       <% end %>
     </div>
+
+    <section id="tags">
+      <% if @ticket.tags.any? %>
+        <%= render @ticket.tags, ticket: @ticket %>
+      <% end %>
+    </section>
+
+  </div>
+
+  <div class="details">
+    <header>
+      <h2><%= @ticket.name %></h2>
+    </header>
 
     <div id="attributes">
       <section class="author">
@@ -39,11 +40,12 @@
           State: <%= render @ticket.state %>
         </section>
       <% end %>
-      <section id="watchers">
-        <%= @ticket.watchers.map(&:email).to_sentence %>
-        <%= toggle_watching_button(@ticket) %>
-      </section>
     </div>
+
+    <section id="watchers">
+      <%= @ticket.watchers.map(&:email).to_sentence %>
+      <%= toggle_watching_button(@ticket) %>
+    </section>
 
     <div>
       <%= simple_format(@ticket.description) %>

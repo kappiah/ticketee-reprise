@@ -3,11 +3,6 @@
 </header>
 
 <div class="actions">
-  <%= form_tag search_project_tickets_path(@project), method: :get, class: "search-bar" do %>
-    <%= text_field_tag "search", params[:search], type: "search" %>
-    <%= submit_tag "Search" %>
-  <% end %>
-
   <% if policy(@project).update? %>
     <%= link_to "Edit Project", edit_project_path(@project), class: "button action" %>
   <% end %>
@@ -25,14 +20,22 @@
   <% end %>
 </div>
 
-<p><%= @project.description %></p>
+<div class="project-body">
+  <%= form_tag search_project_tickets_path(@project), method: :get, class: "search-bar" do %>
+    <%= text_field_tag "search", params[:search], type: "search" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  <hr>
 
-<div id="tickets">
-  <ul>
-    <% @tickets.each do |ticket| %>
-      <li>
-        <%= link_to ticket.name, [@project, ticket] %>
-      </li>
-    <% end %>
-  </ul>
+  <p><%= @project.description %></p>
+
+  <div id="tickets">
+    <ul>
+      <% @tickets.each do |ticket| %>
+        <li>
+          <%= link_to ticket.name, [@project, ticket] %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
