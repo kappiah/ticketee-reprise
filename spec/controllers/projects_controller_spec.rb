@@ -12,7 +12,7 @@ RSpec.describe ProjectsController do
   end
 
   it "handles unauthorised access gracefully" do
-    allow(controller).to receive(:current_user)
+    allow(controller).to receive(:current_user).and_return(:current_user)
 
     project = FactoryGirl.create(:project)
     get :show, id: project
