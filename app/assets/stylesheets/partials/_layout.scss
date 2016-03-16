@@ -1,0 +1,14 @@
+#content {
+  display: flex;
+  flex-flow: row-wrap;
+  margin: 10px 30px;
+}
+
+.actions {
+  flex: 1 20%;
+}
+
+.main {
+  flex: 2 80%;
+}
+

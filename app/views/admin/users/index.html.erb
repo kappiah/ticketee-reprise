@@ -1,10 +1,13 @@
-<header>
-  <h1>Users admin</h1>
-  <ul class="actions">
+<% content_for :actions do %>
+  <ul>
     <li>
       <%= link_to "New User", new_admin_user_path, class: "button safe" %>
     </li>
   </ul>
+<% end %>
+
+<header>
+  <h1>Users admin</h1>
 </header>
 
 <ul>

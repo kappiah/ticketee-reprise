@@ -1,27 +1,32 @@
-<header class="project">
-  <h1><%= link_to @project.name, @project %></h1>
-</header>
-
-<div id="ticket">
-  <div class="meta">
-    <div class="actions">
-      <% if policy(@ticket).update? %>
+<% content_for :actions do %>
+  <ul>
+    <% if policy(@ticket).update? %>
+      <li>
         <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "button safe" %>
-      <% end %>
-      <% if policy(@ticket).destroy? %>
-        <%= link_to "Delete Ticket", [@project, @ticket],
-            method: :delete, class: "delete button danger" %>
-      <% end %>
-    </div>
+      </li>
+    <% end %>
+    <% if policy(@ticket).destroy? %>
+    <li>
+      <%= link_to "Delete Ticket", [@project, @ticket],
+        method: :delete, class: "delete button danger" %>
+    </li>
+    <% end %>
+  </ul>
 
+  <div class="meta">
     <section id="tags">
       <% if @ticket.tags.any? %>
         <%= render @ticket.tags, ticket: @ticket %>
       <% end %>
     </section>
-
   </div>
+<% end %>
 
+<header class="project">
+  <h1><%= link_to @project.name, @project %></h1>
+</header>
+
+<div id="ticket">
   <div class="details">
     <header>
       <h2><%= @ticket.name %></h2>

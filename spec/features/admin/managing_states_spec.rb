@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "admins can manage states" do
-  let!(:state) { FactoryGirl.create(:state, name: "New") }
+  let!(:state) { FactoryGirl.create(:state, name: "Created") }
   let(:admin) { FactoryGirl.create(:user, :admin) }
 
   before do
@@ -9,10 +9,10 @@ RSpec.feature "admins can manage states" do
   end
 
   scenario "marking as default state" do
-    within list_item("New") do
+    within list_item("Created") do
       click_link "Make Default"
     end
 
-    expect(page).to have_content("'New' is the new default state")
+    expect(page).to have_content("'Created' is the new default state")
   end
 end

@@ -18,8 +18,15 @@
     <%= render "navigation" %>
   </section>
   <%= render "flashes" -%>
+
   <div id="content">
-    <%= yield %>
+    <div class="actions">
+      <%= yield :actions %>
+    </div>
+
+    <div class="main">
+      <%= yield %>
+    </div>
   </div>
   <%= render "javascript" %>
 </body>

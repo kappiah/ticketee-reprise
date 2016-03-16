@@ -2,23 +2,31 @@
   <h1><%= @project.name %></h1>
 </header>
 
-<div class="actions">
-  <% if policy(@project).update? %>
-    <%= link_to "Edit Project", edit_project_path(@project), class: "button action" %>
-  <% end %>
+<% content_for :actions do %>
+  <ul>
+    <li>
+      <% if policy(@project).update? %>
+        <%= link_to "Edit Project", edit_project_path(@project), class: "button action" %>
+      <% end %>
+    </li>
 
-  <% if policy(Ticket.new(project: @project)).create? %>
-    <%= link_to "New Ticket", new_project_ticket_path(@project), class: "button safe" %>
-  <% end %>
+    <li>
+      <% if policy(Ticket.new(project: @project)).create? %>
+        <%= link_to "New Ticket", new_project_ticket_path(@project), class: "button safe" %>
+      <% end %>
+    </li>
 
-  <% admins_only do %>
-    <%= link_to "Delete Project",
-      admin_project_path(@project),
-      method: :delete,
-      data: { confirm: "Are you sure you want to delete this project" },
-      class: "button danger" %>
-  <% end %>
-</div>
+    <li>
+      <% admins_only do %>
+        <%= link_to "Delete Project",
+          admin_project_path(@project),
+          method: :delete,
+          data: { confirm: "Are you sure you want to delete this project" },
+          class: "button danger" %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
 
 <div class="project-body">
   <%= form_tag search_project_tickets_path(@project), method: :get, class: "search-bar" do %>

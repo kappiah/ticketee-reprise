@@ -92,7 +92,7 @@ RSpec.feature "users can create new tickets" do
 
     expect(page).to have_content("Ticket has been created")
 
-    within("#ticket #tags") do
+    within(".actions #tags") do
       expect(page).to have_content("browser")
       expect(page).to have_content("visual")
     end

@@ -67,7 +67,7 @@ RSpec.feature "users can comment on tickets" do
     click_button "Create Comment"
     expect(page).to have_content("Comment has been created")
 
-    within("#ticket #tags") do
+    within(".actions #tags") do
       expect(page).to have_content("bug")
     end
   end

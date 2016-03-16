@@ -1,10 +1,6 @@
-
-#content {
-  @include outer-container();
-}
-
 .form-inputs {
-  @include span-columns(4);
+  flex: 1 40%;
+  justify-content: flex-end;
 }
 
 .nav-text {
@@ -28,7 +24,14 @@
   a {
     color: #fff;
   }
+  margin: 2px 0;
   @include button(flat, $blue);
+}
+
+.actions ul {
+  li {
+    margin-bottom: 10px;
+  }
 }
 
 header.project {
@@ -40,9 +43,3 @@ header.project {
     font-size: 30px;
   }
 }
-
-// .projects .actions {
-//   @include span-columns(8);
-//   @include shift(4);
-// }
-
