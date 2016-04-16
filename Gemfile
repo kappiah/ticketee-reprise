@@ -20,7 +20,7 @@ gem "pg"
 gem "pg_search"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 4.2.0"
+gem "rails", "~> 5.0.0.beta3"
 gem "recipient_interceptor"
 gem "refills"
 gem "sass-rails", "~> 5.0"
@@ -41,7 +41,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
- gem "rspec-rails", "~> 3.4.0"
+  gem "rspec-rails", "~> 3.5.0.beta1"
 end
 
 group :test do
