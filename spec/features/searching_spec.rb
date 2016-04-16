@@ -30,7 +30,7 @@ RSpec.feature "Users can search for tickets matching specific criteria" do
   end
 
   scenario "searching by tag" do
-    fill_in "search", with: "tag:iteration_1"
+    fill_in "search", with: "iteration_1"
     click_button("Search")
 
     within("#tickets") do
@@ -40,7 +40,7 @@ RSpec.feature "Users can search for tickets matching specific criteria" do
   end
 
   scenario "searching by state" do
-    fill_in "search", with: "state:Open"
+    fill_in "search", with: "Open"
     click_button "Search"
 
     within("#tickets") do

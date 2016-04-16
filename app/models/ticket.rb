@@ -1,4 +1,6 @@
 class Ticket < ActiveRecord::Base
+  include PgSearch
+
   attr_accessor :tag_names
 
   before_create :assign_default_state
@@ -18,10 +20,10 @@ class Ticket < ActiveRecord::Base
   has_and_belongs_to_many :tags, uniq: true
   has_and_belongs_to_many :watchers, join_table: "ticket_watchers", class_name: "User", uniq: true
 
-  searcher do
-    label :tag, from: :tags, field: "name"
-    label :state, from: :state, field: "name"
-  end
+  pg_search_scope :search, :associated_against => {
+    :tags => [:name],
+    :state => [:name]
+  }
 
   def tag_names
     @tag_names

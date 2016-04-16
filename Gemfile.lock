@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/radar/searcher.git
-  revision: c2975124e11677825481ced9539f16f0cb0640de
-  specs:
-    searcher (0.0.7)
-      activerecord (~> 4.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -157,6 +150,10 @@ GEM
     parser (2.3.0.7)
       ast (~> 2.2)
     pg (0.18.4)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -301,6 +298,7 @@ DEPENDENCIES
   neat (~> 1.7.0)
   normalize-rails (~> 3.0.0)
   pg
+  pg_search
   pry-rails
   puma
   pundit (~> 1.0.1)
@@ -311,7 +309,6 @@ DEPENDENCIES
   refills
   rspec-rails (~> 3.4.0)
   sass-rails (~> 5.0)
-  searcher!
   shoulda-matchers
   simple_form
   simplecov
