@@ -7,7 +7,11 @@ Rails.application.configure do
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.middleware.use Rack::Deflater
   config.middleware.use Rack::CanonicalHost, ENV.fetch("HOST")
+  config.assets.css_compiler = :sass
   config.assets.js_compressor = :uglifier
+  # Action Cable endpoint configuration
+  # config.action_cable.url = 'wss://example.com/cable'
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
   config.assets.compile = false
   config.assets.digest = true
   config.log_level = :debug
