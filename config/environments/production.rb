@@ -4,7 +4,6 @@ Rails.application.configure do
   config.eager_load = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.middleware.use Rack::Deflater
   config.middleware.use Rack::CanonicalHost, ENV.fetch("HOST")
   config.assets.css_compiler = :sass
