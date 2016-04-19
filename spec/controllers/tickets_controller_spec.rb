@@ -10,10 +10,10 @@ RSpec.describe TicketsController do
   end
 
   it "can create tickets but not tag them" do
-    post :create, ticket: { name: "New Ticket",
+    post :create, params: { ticket: { name: "New Ticket",
                             description: "Brand spinking new",
                             tag_names: "these are tags" },
-                            project_id: project.id
+                            project_id: project.id }
 
     expect(Ticket.last.tags).to be_empty
   end

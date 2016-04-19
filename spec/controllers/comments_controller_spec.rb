@@ -17,7 +17,7 @@ RSpec.describe CommentsController do
     end
 
     it "cannot transition a state by passing though state_id" do
-      post :create, { comment: { text: "Did I hack it?",
+      post :create, params: { comment: { text: "Did I hack it?",
                                  state_id: state.id },
                       ticket_id: ticket.id }
       ticket.reload
@@ -34,7 +34,7 @@ RSpec.describe CommentsController do
     end
 
     it "cannot tag a ticket when creating a coment" do
-      post :create, { comment: { text: "Tag!",
+      post :create, params: { comment: { text: "Tag!",
                                  tag_names: "one two" },
                       ticket_id: ticket.id }
       ticket.reload
