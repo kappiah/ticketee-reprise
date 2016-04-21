@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "users can create new tickets" do
+RSpec.feature "users can creating new tickets" do
   let(:user) { FactoryGirl.create(:user) }
   let!(:state) { FactoryGirl.create(:state, name: "New", default: true) }
 
@@ -12,7 +12,7 @@ RSpec.feature "users can create new tickets" do
     click_link "New Ticket"
   end
 
-  scenario "with valid attributes" do
+  scenario "will succeed with valid attributes" do
     fill_in "Name", with: "Non-standards compliance"
     fill_in "Description", with: "My pages are ugly"
     click_button "Create ticket"
@@ -25,12 +25,12 @@ RSpec.feature "users can create new tickets" do
     end
   end
 
-  scenario "with invalid attribtes" do
+  scenario "will fail with invalid attribtes" do
+    fill_in "Description", with: "This will fail"
     click_button "Create ticket"
 
     expect(page).to have_content("Ticket has not been created")
     expect(page).to have_content("Name can't be blank")
-    expect(page).to have_content("Description can't be blank")
   end
 
   scenario "with an invalid description" do
@@ -42,7 +42,7 @@ RSpec.feature "users can create new tickets" do
     expect(page).to have_content("Description is too short")
   end
 
-  scenario "with an attachment" do
+  scenario "will be able to add an attachment" do
     fill_in "Name", with: "Add documentation of blink tag"
     fill_in "Description", with: "The blink tag has a speed attribute"
     attach_file "File #1", "spec/fixtures/speed.txt"
@@ -54,7 +54,7 @@ RSpec.feature "users can create new tickets" do
     end
   end
 
-  scenario "persisting file uploads across form reloads" do
+  scenario "will persist file uploads across form reloads" do
     attach_file "File #1", "spec/fixtures/speed.txt"
 
     click_button "Create ticket"
