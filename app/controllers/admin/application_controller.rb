@@ -1,6 +1,6 @@
 class Admin::ApplicationController < ApplicationController
   before_action :authorise_admin!
-  skip_after_action :verify_authorized, :verify_policy_scoped
+  skip_after_action :verify_policy_scoped
 
   def index
   end
