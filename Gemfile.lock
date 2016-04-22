@@ -168,7 +168,7 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.4.0)
-    pundit (1.0.1)
+    pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.0.alpha)
       json
@@ -318,7 +318,7 @@ DEPENDENCIES
   pg_search
   pry-rails
   puma
-  pundit (~> 1.0.1)
+  pundit (~> 1.1.0)
   rack-canonical-host
   rack-timeout
   rails (~> 5.0.0.beta3)
