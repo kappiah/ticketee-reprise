@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   attr_accessor :tag_names
 
   before_create :set_previous_state
