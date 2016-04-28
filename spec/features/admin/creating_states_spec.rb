@@ -12,7 +12,7 @@ RSpec.feature "admins can create new states for tickets" do
     fill_in "Name", with: "Won't fix"
     fill_in "Colour", with: "orange"
 
-    click_button "Create state"
+    click_button "Create State"
 
     expect(page).to have_content("State has been created")
   end

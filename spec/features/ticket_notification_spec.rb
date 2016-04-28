@@ -18,7 +18,7 @@ RSpec.feature "Users can recieve notifications about ticket updates" do
 
   scenario "ticket authors automatically recieve notifications" do
     fill_in "Text", with: "Is it out yet?"
-    click_button "Create comment"
+    click_button "Create Comment"
 
     email = find_email!(alice.email)
     expected_subject = "[ticketee] #{project.name} - #{ticket.name}"
@@ -30,7 +30,7 @@ RSpec.feature "Users can recieve notifications about ticket updates" do
 
   scenario "comment authors are automatically subscribed to updates" do
     fill_in "Text", with: "Is it out yet?"
-    click_button "Create comment"
+    click_button "Create Comment"
 
     click_link "Sign Out"
     reset_mailer
@@ -38,7 +38,7 @@ RSpec.feature "Users can recieve notifications about ticket updates" do
     visit project_ticket_path(project, ticket, as: alice)
 
     fill_in "Text", with: "Not yet - Sorry!"
-    click_button "Create comment"
+    click_button "Create Comment"
 
     expect(page).to have_content("Comment has been created")
     expect(unread_emails_for(bob.email).count).to eq(1)

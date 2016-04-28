@@ -12,7 +12,7 @@ RSpec.feature "users can comment on tickets" do
   scenario "with valid attributes" do
     visit project_ticket_path(project, ticket, as: user)
     fill_in "Text", with: "Added a comment!"
-    click_button("Create comment")
+    click_button("Create Comment")
 
     expect(page).to have_content("Comment has been created")
 
@@ -24,7 +24,7 @@ RSpec.feature "users can comment on tickets" do
   scenario "with invalid details" do
     visit project_ticket_path(project, ticket, as: user)
 
-    click_button("Create comment")
+    click_button("Create Comment")
 
     expect(page).to have_content("Comment has not been created")
   end
@@ -36,7 +36,7 @@ RSpec.feature "users can comment on tickets" do
 
     fill_in "Text", with: "This is a real issue"
     select "Open", from: "State"
-    click_button "Create comment"
+    click_button "Create Comment"
 
     expect(page).to have_content("Comment has been created")
 
@@ -64,7 +64,7 @@ RSpec.feature "users can comment on tickets" do
     fill_in "Text", with: "Adding a the bug tag"
     fill_in "Tags", with: "bug"
 
-    click_button "Create comment"
+    click_button "Create Comment"
     expect(page).to have_content("Comment has been created")
 
     within(".actions #tags") do

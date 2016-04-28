@@ -15,7 +15,7 @@ RSpec.feature "users can creating new tickets" do
   scenario "will succeed with valid attributes" do
     fill_in "Name", with: "Non-standards compliance"
     fill_in "Description", with: "My pages are ugly"
-    click_button "Create ticket"
+    click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has been created")
     expect(page).to have_content("State: New")
@@ -27,7 +27,7 @@ RSpec.feature "users can creating new tickets" do
 
   scenario "will fail with invalid attribtes" do
     fill_in "Description", with: "This will fail"
-    click_button "Create ticket"
+    click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has not been created")
     expect(page).to have_content("Name can't be blank")
@@ -36,7 +36,7 @@ RSpec.feature "users can creating new tickets" do
   scenario "with an invalid description" do
     fill_in "Name", with: "Non-standards compliance"
     fill_in "Description", with: "It sucks"
-    click_button "Create ticket"
+    click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has not been created")
     expect(page).to have_content("Description is too short")
@@ -46,7 +46,7 @@ RSpec.feature "users can creating new tickets" do
     fill_in "Name", with: "Add documentation of blink tag"
     fill_in "Description", with: "The blink tag has a speed attribute"
     attach_file "File #1", "spec/fixtures/speed.txt"
-    click_button "Create ticket"
+    click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has been created")
     within "#ticket .attachments" do
@@ -57,12 +57,12 @@ RSpec.feature "users can creating new tickets" do
   scenario "will persist file uploads across form reloads" do
     attach_file "File #1", "spec/fixtures/speed.txt"
 
-    click_button "Create ticket"
+    click_button "Create Ticket"
 
     fill_in "Name", with: "Add documentation of blink tag"
     fill_in "Description", with: "The blink tag has a speed attribute"
 
-    click_button "Create ticket"
+    click_button "Create Ticket"
     within "#ticket .attachments" do
       expect(page).to have_content("speed.txt")
     end
@@ -75,7 +75,7 @@ RSpec.feature "users can creating new tickets" do
     click_link "Add another file"
     attach_file "File #2", "spec/fixtures/spin.txt"
 
-    click_button "Create ticket"
+    click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has been created")
     within "#ticket .attachments" do
@@ -88,7 +88,7 @@ RSpec.feature "users can creating new tickets" do
     fill_in "Name", with: "Non standards compliance"
     fill_in "Description", with: "My pages are ugly!"
     fill_in "Tags", with: "browser visual"
-    click_button "Create ticket"
+    click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has been created")
 
