@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.2.4"
+ruby "2.3.1"
 
 gem "autoprefixer-rails"
 gem "bourbon", "~> 4.2.0"
@@ -21,7 +21,7 @@ gem "pg"
 gem "pg_search"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 5.0.0.rc1"
+gem "rails", "5.0.0"
 gem "recipient_interceptor"
 gem "refills"
 gem "sass-rails", "~> 5.0"
@@ -42,7 +42,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.5.0.beta1"
+  gem "rspec-rails", "~> 3.5.0"
 end
 
 group :test do
